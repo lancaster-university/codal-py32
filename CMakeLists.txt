@@ -1,0 +1,24 @@
+project(codal-py32)
+enable_language(ASM)
+
+include("${CODAL_UTILS_LOCATION}")
+
+# find sources and headers
+RECURSIVE_FIND_DIR(TOP_LEVEL_INCLUDE_DIRS "${CMAKE_CURRENT_SOURCE_DIR}/inc" "*.h")
+RECURSIVE_FIND_FILE(TOP_LEVEL_SOURCE_FILES "${CMAKE_CURRENT_SOURCE_DIR}/source" "*.c??")
+
+list(APPEND SOURCE_FILES "${CMAKE_CURRENT_SOURCE_DIR}/asm/CortexContextSwitch.s")
+
+# add them
+include_directories(${TOP_LEVEL_INCLUDE_DIRS})
+
+# create our target
+add_library(codal-py32 ${SOURCE_FILES} ${TOP_LEVEL_SOURCE_FILES})
+
+target_link_libraries(
+    codal-py32
+    codal-core
+)
+
+# expose it to parent cmake.
+target_include_directories(codal-py32 PUBLIC ${TOP_LEVEL_INCLUDE_DIRS})
