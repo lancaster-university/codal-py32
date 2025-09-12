@@ -259,7 +259,7 @@ int PY32Pin::setAnalogPeriodUs(uint32_t period)
   * @return the period on success, or DEVICE_NOT_SUPPORTED if the
   *         given pin is not configured as an analog output.
   */
-uint32_t ATMegaPin::getAnalogPeriodUs()
+uint32_t PY32Pin::getAnalogPeriodUs()
 {
     if (!(status & IO_STATUS_ANALOG_OUT))
         return DEVICE_NOT_SUPPORTED;
