@@ -8,6 +8,7 @@ RECURSIVE_FIND_DIR(TOP_LEVEL_INCLUDE_DIRS "${CMAKE_CURRENT_SOURCE_DIR}/inc" "*.h
 RECURSIVE_FIND_FILE(TOP_LEVEL_SOURCE_FILES "${CMAKE_CURRENT_SOURCE_DIR}/source" "*.c??")
 
 list(APPEND SOURCE_FILES "${CMAKE_CURRENT_SOURCE_DIR}/asm/CortexContextSwitch.s")
+list(APPEND SOURCE_FILES "${CMAKE_CURRENT_SOURCE_DIR}/asm/startup/startup_${device.processor}.s")
 
 # add them
 include_directories(${TOP_LEVEL_INCLUDE_DIRS})
